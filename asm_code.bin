@@ -1,0 +1,26 @@
+
+
+0x0804 : C3 07 08          JMP START
+
+0x0807 : 00                START: NOP
+
+
+0x0808 : 06 00             MVI B,00H 
+
+0x080A : 0E 08             MVI C,08H  
+
+0x080C : 7A                MOV A, D
+
+0x080D : 1F                BACK: RAR 
+
+0x080E : C3 15 08          JMP SKIP  
+
+0x0811 : C3 14 08          JMP DHA
+
+0x0814 : 04                DHA:INR B
+
+0x0815 : 0D                SKIP:DCR C  
+
+0x0816 : C2 0D 08          JNZ BACK
+
+0x0819 : 76                HLT
