@@ -387,6 +387,9 @@ void mnemonic_opcode_generator(int pos,int num_of_shifts)
         case '7':
             equivalent_opcode |= (7 << num_of_shifts);
             break;
+        default:
+            equivalent_opcode |= (M << num_of_shifts);
+            break;
     }
 }
 
@@ -490,7 +493,7 @@ void update_opcode(int pos)
     }
     else if(instructions_size[position]==3 || program_counter_flag)
     {
-        if(instructions_array[pos+1]>57)
+        if(instructions_array[pos+1]>57 && position!=1 && position!=2)
         {
             mnemonic_arr_iterator=0;
             pos+=1;
