@@ -493,6 +493,8 @@ void update_opcode(int pos)
     }
     else if(instructions_size[position]==3 || program_counter_flag)
     {
+        int pos_copy = pos;
+        int found = 0;
         if(instructions_array[pos+1]>57 && position!=1 && position!=2)
         {
             mnemonic_arr_iterator=0;
@@ -515,12 +517,14 @@ void update_opcode(int pos)
                 if(!strcmp(mnemonic_array,label_set[i]))
                 {
                     address = label_address[i];
+                    found = 1;
                 }
             }
             address_flag = 1;
         }
-        else
+        if(found==0)
         {
+            pos = pos_copy;
             byte1_flag = 0;
             address_flag = 1;
             address = 0;
